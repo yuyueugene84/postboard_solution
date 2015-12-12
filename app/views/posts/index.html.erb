@@ -1,4 +1,5 @@
 <% @posts.each do |post| %>
+  
   <div class="row">
     <div class="well col-md-6">
       <p>
@@ -9,8 +10,9 @@
       </p>
       <br>
       <span>
-        <%= link_to "show this post", post_path(post)%>
+        <%= link_to "show this post", post_path(post) %>
       </span>
     </div>
   </div>
+
 <% end %>
