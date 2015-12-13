@@ -1,4 +1,5 @@
-class UsersController < ActiveRecord::Base
+class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -7,7 +8,6 @@ class UsersController < ActiveRecord::Base
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice]= "You have registered"
       redirect_to root_path
     else
       render :new
@@ -17,7 +17,7 @@ class UsersController < ActiveRecord::Base
   private 
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:name, :password)
   end
 end
 
