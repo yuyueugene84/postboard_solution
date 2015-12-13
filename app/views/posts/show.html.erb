@@ -1,4 +1,4 @@
-<%= render 'shared/title', title: "Show post #{@post.id}: #{@post.title}"%>
+<%= render 'shared/title', title: "#{@post.title}"%>
 
 <div class="row">
   <div class="col-md-8 well">
@@ -21,15 +21,18 @@
   </div>
 <% end %>
 
-<h4>Leave a comment:</h4>
-<%= form_for [@post, @comment] do |f| %>
-  <div class="row">
-    <%= f.text_area :content, rows: 3, class: 'col-md-4' %>
-    <div class="col-md-2">
-      <%= f.submit 'Create Comment', class: 'btn btn-primary' %>
+<% if logged_in? %>
+
+  <h4>Leave a comment:</h4>
+  <%= form_for [@post, @comment] do |f| %>
+    <div class="row">
+      <%= f.text_area :content, rows: 3, class: 'col-md-4' %>
+      <div class="col-md-2">
+        <%= f.submit 'Create Comment', class: 'btn btn-primary' %>
+      </div>
     </div>
-  </div>
-  <br>
+    <br>
+  <% end %>
 
 <% end %>
 
