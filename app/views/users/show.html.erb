@@ -1,0 +1,34 @@
+<%= render 'shared/title', title: "#{@user.name}'s activities"%>
+
+<h4><%= current_user.name %>'s posts:</h4>
+
+<% @user.posts.each do |post| %>
+
+<div class="row">
+  <div class="col-md-8 well">
+    <h3><%= post.title %></h3>
+    <p>
+      <%= post.content %>
+    </p>
+    <br>
+    <small>posted by </small><%= " #{post.user.name}" %>
+  </div>
+</div>
+
+<% end %>
+<hr>
+<h4><%= current_user.name %>'s comments:</h4>
+
+<% @user.comments.each do |comment| %>
+  <div class="row">
+    <div class="col-md-6 well">
+      <p>
+        <%= comment.content %>
+      </p>
+      <br>
+      <small>commented by </small><%= "#{comment.user.name}" %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to 'Back', root_path %>
