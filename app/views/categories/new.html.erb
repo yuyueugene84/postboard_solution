@@ -1,0 +1,12 @@
+<%= render 'shared/title', title: "Create New Category"%>
+
+<div class="well col-md-6">
+  <%= form_for @category do |c| %>
+    <div class="form-group">
+    	<%= c.label :category_name %>
+    	<br>
+    	<%= c.text_field :name %>
+    </div>
+    <%= c.submit 'Create Category', class: 'btn btn-primary' %>
+  <% end %>
+</div>
