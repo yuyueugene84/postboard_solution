@@ -2,6 +2,7 @@
 
 <div class="row">
   <div class="col-md-8 well">
+    <%= render partial: "categories/category", collection: @post.categories %>
     <h3><%= @post.title %></h3>
     <p>
       <%= @post.content %>
