@@ -16,6 +16,22 @@
 
 <% @post.comments.each do |comment| %>
   <div class="row">
+    <div class='col-md-1 well text-center'>
+      <% if logged_in? %>
+        <%= link_to vote_post_comment_path(@post, comment, vote: true), class: "btn btn-primary", method: 'post' do %>
+          Like
+        <% end %>
+      <% end %>
+      <br/>
+      <%= comment.total_votes %> Votes
+      <br/>
+      <% if logged_in? %>
+        <%= link_to vote_post_comment_path(@post, comment, vote: false), class: "btn btn-danger", method: 'post' do %>
+          Dislike
+        <% end %>
+      <% end %>
+    </div>
+
     <div class="col-md-6 well">
       <p>
         <%= comment.content %>
@@ -27,7 +43,7 @@
 <% end %>
 
 <% if logged_in? %>
-
+  
   <h4>Leave a comment:</h4>
   <%= form_for [@post, @comment] do |f| %>
     <div class="row">
