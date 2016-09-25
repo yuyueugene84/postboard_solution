@@ -1,15 +1,32 @@
-  <div class="row">
-    <div class="well col-md-6">
-      <%= render partial: "categories/category", collection: post.categories %>
-      <p>
-        <h4><%= post.title %></h4>
-      </p>
-      <p>
-        <%= post.content %>
-      </p>
-      <br>
-      <span>
-        <%= link_to "show this post", post_path(post) %>
-      </span>
-    </div>
+<div class="row">
+  <div class='col-md-1 well text-center'>
+    <% if logged_in? %>
+      <%= link_to vote_post_path(post, vote: true), class: "btn btn-primary", method: 'post' do %>
+        Like
+      <% end %>
+    <%end %>
+
+    <br/>
+    <%= post.total_votes %> Votes
+    <br/>
+
+    <% if logged_in? %>
+        <%= link_to vote_post_path(post, vote: false), class: "btn btn-danger", method: 'post' do %>
+          Dislike
+        <% end %>
+    <% end %>
   </div>
+  <div class="well col-md-6">
+    <%= render partial: "categories/category", collection: post.categories %>
+    <p>
+      <h4><%= post.title %></h4>
+    </p>
+    <p>
+      <%= post.content %>
+    </p>
+    <br>
+    <span>
+      <%= link_to "show this post", post_path(post) %>
+    </span>
+  </div>
+</div>
